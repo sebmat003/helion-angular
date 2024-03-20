@@ -8,8 +8,8 @@
     Currency: <span class="font-weight-bold">{{ account.currency }}</span>
   </p>
   <div class="bank-account__withdraw withdraw">
-    <input placeholder="Withdraw" type="number" />
-    <button>
+    <input [(ngModel)]="moneyToWithdraw" placeholder="Withdraw" type="number" />
+    <button (click)="withdrawMoney()" [disabled]="!moneyToWithdraw">
       Withdraw
     </button>
   </div>

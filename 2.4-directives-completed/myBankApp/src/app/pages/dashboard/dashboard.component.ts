@@ -9,4 +9,16 @@ import { BankAccountComponent } from './components/bank-account/bank-account.com
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+  account = {
+    name: 'Main account',
+    balance: 10000,
+    currency: 'PLN',
+    status: 'active'
+  }
+
+  onWithdrawMoney(withdrawAmount: number) {
+    console.log(withdrawAmount);
+    // http request call
+  }
+}
