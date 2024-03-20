@@ -10,12 +10,26 @@ import { BankAccountComponent } from './components/bank-account/bank-account.com
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  account = {
-    name: 'Main account',
-    balance: 10000,
-    currency: 'PLN',
-    status: 'active'
-  }
+  accounts = [
+    {
+      name: 'Main account',
+      balance: 10000,
+      currency: 'PLN',
+      status: 'active',
+    },
+    {
+      name: 'Second account',
+      balance: 2000,
+      currency: 'EUR',
+      status: 'active',
+    },
+    {
+      name: 'Another account',
+      balance: 0,
+      currency: 'USD',
+      status: 'inactive',
+    },
+  ];
 
   onWithdrawMoney(withdrawAmount: number) {
     console.log(withdrawAmount);
