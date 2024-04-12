@@ -32,6 +32,10 @@ export class BankAccountComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   showWithdrawWarning = false;
 
+  get balance(): number {
+    return this.account.balance;
+  }
+
   get withdrawControl(): FormControl {
     return this.form.get('withdraw') as FormControl;
   }
