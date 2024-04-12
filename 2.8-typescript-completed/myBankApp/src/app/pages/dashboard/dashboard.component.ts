@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { BankAccountComponent } from './components/bank-account/bank-account.component';
 import { BankAccountHttpService } from './services/bank-account-http.service';
+import { BankAccount } from './models/dashboard.models';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +13,11 @@ import { BankAccountHttpService } from './services/bank-account-http.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  accounts: any[] = [];
+  accounts: BankAccount[] = [];
 
   constructor(private bankAccountHttpService: BankAccountHttpService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.bankAccountHttpService
       .getBankAccounts()
       .subscribe((accounts) => (this.accounts = accounts));
