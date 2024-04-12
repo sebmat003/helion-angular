@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BankAccountComponent } from './components/bank-account/bank-account.component';
 import { BankAccountHttpService } from './services/bank-account-http.service';
 
@@ -11,16 +11,10 @@ import { BankAccountHttpService } from './services/bank-account-http.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
-  accounts: any[] = [];
+export class DashboardComponent {
+  accounts$ = this.bankAccountHttpService.getBankAccounts();
 
   constructor(private bankAccountHttpService: BankAccountHttpService) {}
-
-  ngOnInit(): void {
-    this.bankAccountHttpService
-      .getBankAccounts()
-      .subscribe((accounts) => (this.accounts = accounts));
-  }
 
   onWithdrawMoney(accountId: number, withdrawAmount: number) {
     this.bankAccountHttpService.withdrawMoney(accountId, withdrawAmount);

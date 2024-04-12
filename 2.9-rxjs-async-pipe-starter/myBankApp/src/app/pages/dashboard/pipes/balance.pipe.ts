@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Currency } from '../models/dashboard.models';
 
-const translatedCurrency: any = {
+const translatedCurrency = {
   PLN: 'złotych',
   EUR: 'euro',
   USD: 'dolarów',
@@ -11,7 +12,7 @@ const translatedCurrency: any = {
   standalone: true,
 })
 export class BalancePipe implements PipeTransform {
-  transform(value: number, currency: any, uppercase = false): string {
+  transform(value: number, currency: Currency, uppercase = false): string {
     let balance = value + ' ' + translatedCurrency[currency];
     if (uppercase) {
       balance = balance.toUpperCase();
