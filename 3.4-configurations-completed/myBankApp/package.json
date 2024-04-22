@@ -1,12 +1,16 @@
 {
   "name": "my-bank-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "prettier:check": "prettier --check src/**/*.{ts,js,scss,html}",
+    "prettier:write": "prettier --write src/**/*.{ts,js,scss,html}",
+    "stylelint": "npx stylelint \"**/*.scss\""
   },
   "private": true,
   "dependencies": {
@@ -18,15 +22,28 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "husky": "^9.0.11",
+    "postcss-scss": "^4.0.9",
     "rxjs": "~7.8.0",
+    "stylelint": "^16.3.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-scss": "^6.2.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.0",
+    "@angular-eslint/builder": "17.3.0",
+    "@angular-eslint/eslint-plugin": "17.3.0",
+    "@angular-eslint/eslint-plugin-template": "17.3.0",
+    "@angular-eslint/schematics": "17.3.0",
+    "@angular-eslint/template-parser": "17.3.0",
     "@angular/cli": "^17.3.0",
     "@angular/compiler-cli": "^17.3.0",
     "@types/jasmine": "~5.1.0",
+    "@typescript-eslint/eslint-plugin": "7.2.0",
+    "@typescript-eslint/parser": "7.2.0",
+    "eslint": "^8.57.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -35,5 +52,11 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "prettier": "^3.2.5",
     "typescript": "~5.4.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier:check && npm run lint && npm run stylelint",
+      "pre-push": "ng build --aot true"
+    }
   }
 }
