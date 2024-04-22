@@ -36,8 +36,14 @@ export class BankAccountHttpService {
     },
   ];
 
+  VISIBLE_ACCOUNTS: number[] = [1, 3, 4];
+
   getBankAccounts(): Observable<BankAccount[]> {
     return of(this.BANK_ACCOUNTS).pipe(delay(500));
+  }
+
+  getVisibleAccounts(): Observable<number[]> {
+    return of(this.VISIBLE_ACCOUNTS).pipe(delay(1000));
   }
 
   withdrawMoney(accountId: number, amount: number) {
