@@ -8,9 +8,11 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "prettier:check": "prettier --check src/**/*.{ts,js,scss,html}",
-    "prettier:write": "prettier --write src/**/*.{ts,js,scss,html}",
-    "stylelint": "npx stylelint \"**/*.scss\""
+    "prettier:check": "prettier --check src/**/*.{ts,scss,html}",
+    "prettier:write": "prettier --write src/**/*.{ts,scss,html}",
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "prepare": "cd ../../ && husky install",
+    "npm:i": "npm install"
   },
   "private": true,
   "dependencies": {
@@ -53,10 +55,15 @@
     "prettier": "^3.2.5",
     "typescript": "~5.4.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettier:check && npm run lint && npm run stylelint",
-      "pre-push": "ng build --aot true"
-    }
+  "lint-staged": {
+    "*.{ts,html,scss}": [
+      "npm run prettier:check"
+    ],
+    "*.{ts,html}": [
+      "npm run lint"
+    ],
+    "*.{scss}": [
+      "npm run stylelint"
+    ]
   }
 }
