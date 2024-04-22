@@ -1,8 +1,0 @@
-<h2>Dashboard</h2>
-
-<ng-container *ngIf="accounts$ | async as accounts; else loader">
-  <app-bank-account *ngFor="let account of accounts; let i = index" [ngClass]="{ 'main-account': i === 0}"
-    [account]="account" (withdrawMoney$)="onWithdrawMoney(account.id, $event)"></app-bank-account>
-</ng-container>
-
-<ng-template #loader>Loading...</ng-template>

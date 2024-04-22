@@ -5,6 +5,28 @@
   margin: 10px;
   position: relative;
 
+  & &__balance {
+    color: black;
+
+    &--positive {
+      color: green;
+    }
+
+    &--negative {
+      color: red;
+    }
+  }
+
+  & &__currency {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-left: 10px;
+      width: 50px;
+    }
+  }
+
   & &__status {
     position: absolute;
     top: 10px;
