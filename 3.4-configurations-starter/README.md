@@ -9,7 +9,6 @@
 
 HUSKY:
 
-- npx lint-staged
-- npx mrm lint-staged
+- npm lint-staged husky
 - be sure to have correct a path for installing husky folder ("prepare": "cd ../../ && husky install")
 - add lint-staged config in package.json to check for eslint, stylelint and prettier rules
