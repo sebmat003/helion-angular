@@ -22,7 +22,7 @@ import { Subject, takeUntil } from 'rxjs';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, BalancePipe, AsyncPipe],
   templateUrl: './bank-account.component.html',
-  styleUrls: ['./bank-account.component.scss'],
+  styleUrl: './bank-account.component.scss',
 })
 export class BankAccountComponent implements OnInit, OnDestroy {
   @Input() account!: BankAccount;
