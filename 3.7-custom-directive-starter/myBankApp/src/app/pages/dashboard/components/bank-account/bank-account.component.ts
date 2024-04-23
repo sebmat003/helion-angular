@@ -1,7 +1,10 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
 import {
+  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
+  ContentChild,
+  ElementRef,
   EventEmitter,
   Input,
   OnDestroy,
@@ -24,9 +27,12 @@ import { Subject, takeUntil } from 'rxjs';
   imports: [CommonModule, ReactiveFormsModule, BalancePipe, AsyncPipe],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BankAccountComponent implements OnInit, OnDestroy {
+export class BankAccountComponent
+  implements OnInit, AfterContentInit, OnDestroy
+{
+  @ContentChild('deleteButton') deleteButton!: ElementRef;
   @Input() account!: BankAccount;
   @Output() withdrawMoney$ = new EventEmitter<number>();
 
@@ -66,6 +72,12 @@ export class BankAccountComponent implements OnInit, OnDestroy {
   withdrawMoney() {
     this.withdrawMoney$.next(this.withdrawControlValue);
     this.form.reset();
+  }
+
+  ngAfterContentInit() {
+    if (this.account.status === 'inactive') {
+      this.deleteButton.nativeElement.disabled = true;
+    }
   }
 
   ngOnDestroy() {

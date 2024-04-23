@@ -6,7 +6,11 @@
       [ngClass]="{ 'main-account': i === 0 }"
       [account]="account"
       (withdrawMoney$)="onWithdrawMoney(account.id, $event)"
-    ></app-bank-account>
+    >
+      <button #deleteButton (click)="deleteAccount(account.id)">
+        Delete account
+      </button>
+    </app-bank-account>
   }
 } @else {
   Loading...
