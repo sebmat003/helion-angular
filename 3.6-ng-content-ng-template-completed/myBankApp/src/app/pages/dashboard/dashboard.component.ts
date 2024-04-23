@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { BankAccountComponent } from './components/bank-account/bank-account.component';
 import { BankAccountHttpService } from './services/bank-account-http.service';
-import { combineLatest, map } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,20 +11,32 @@ import { combineLatest, map } from 'rxjs';
   providers: [BankAccountHttpService],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
   private readonly bankAccountHttpService = inject(BankAccountHttpService);
-  accounts$ = combineLatest([
-    this.bankAccountHttpService.getBankAccounts(),
-    this.bankAccountHttpService.getVisibleAccounts(),
-  ]).pipe(
-    map(([accounts, visible]) =>
-      accounts.filter((account) => visible.includes(account.id)),
-    ),
-  );
+  accountsChange$ = new BehaviorSubject<void>(undefined);
+  accounts$ = this.accountsChange$
+    .pipe(
+      switchMap(() =>
+        combineLatest([
+          this.bankAccountHttpService.getBankAccounts(),
+          this.bankAccountHttpService.getVisibleAccounts(),
+        ]),
+      ),
+    )
+    .pipe(
+      map(([accounts, visible]) =>
+        accounts.filter((account) => visible.includes(account.id)),
+      ),
+    );
 
   onWithdrawMoney(accountId: number, withdrawAmount: number) {
     this.bankAccountHttpService.withdrawMoney(accountId, withdrawAmount);
+  }
+
+  deleteAccount(accountId: number) {
+    this.bankAccountHttpService.deleteAccount(accountId);
+    this.accountsChange$.next();
   }
 }
