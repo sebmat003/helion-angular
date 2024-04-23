@@ -20,7 +20,10 @@
   </p>
   <p class="bank-account__currency">
     Currency:
-    <img [src]="'assets/icons/' + account.currency.toLowerCase() + '.svg'" />
+    <img
+      [src]="'assets/icons/' + account.currency.toLowerCase() + '.svg'"
+      alt="currency icon"
+    />
   </p>
   <div class="bank-account__withdraw withdraw">
     <input formControlName="withdraw" placeholder="Withdraw" type="number" />
