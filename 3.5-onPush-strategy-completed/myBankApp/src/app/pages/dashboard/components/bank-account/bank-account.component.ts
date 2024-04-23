@@ -1,5 +1,6 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -23,6 +24,7 @@ import { Subject, takeUntil } from 'rxjs';
   imports: [CommonModule, ReactiveFormsModule, BalancePipe, AsyncPipe],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BankAccountComponent implements OnInit, OnDestroy {
   @Input() account!: BankAccount;
