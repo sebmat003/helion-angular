@@ -20,11 +20,12 @@ import {
 import { BalancePipe } from '../../pipes/balance.pipe';
 import { BankAccount } from '../../models/dashboard.models';
 import { Subject, takeUntil } from 'rxjs';
+import { CardStatusDirective } from '../../../../shared/directives/card-status.directive';
 
 @Component({
   selector: 'app-bank-account',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BalancePipe, AsyncPipe],
+  imports: [CommonModule, ReactiveFormsModule, BalancePipe, AsyncPipe, CardStatusDirective],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

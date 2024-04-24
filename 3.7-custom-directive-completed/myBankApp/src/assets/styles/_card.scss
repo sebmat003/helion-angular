@@ -1,0 +1,14 @@
+.card {
+  transition: 0.2s all;
+}
+
+.active-card {
+  background-color: rgb(223, 234, 218);
+  border: 2px solid rgb(65, 163, 68);
+  box-shadow: 2px 0 22px 1px rgba(66, 68, 90, 1);
+}
+
+.inactive-card {
+  background-color: rgb(187, 182, 182);
+  border: 2px solid rgb(76, 76, 76);
+}

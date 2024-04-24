@@ -1,4 +1,4 @@
-<div [formGroup]="form" class="bank-account">
+<div [appCardStatus]="account.status" [formGroup]="form" class="bank-account">
   <div
     class="bank-account__status"
     [class]="'bank-account__status--' + account.status"
