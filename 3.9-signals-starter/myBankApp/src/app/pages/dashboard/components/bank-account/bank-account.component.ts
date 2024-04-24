@@ -21,14 +21,22 @@ import { BalancePipe } from '../../pipes/balance.pipe';
 import { BankAccount } from '../../models/dashboard.models';
 import { Subject, takeUntil } from 'rxjs';
 import { CardStatusDirective } from '../../../../shared/directives/card-status.directive';
+import { InputNumberComponent } from '../../../../shared/components/input-number/input-number.component';
 
 @Component({
   selector: 'app-bank-account',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BalancePipe, AsyncPipe, CardStatusDirective],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    BalancePipe,
+    AsyncPipe,
+    CardStatusDirective,
+    InputNumberComponent,
+  ],
 })
 export class BankAccountComponent
   implements OnInit, AfterContentInit, OnDestroy
@@ -73,6 +81,7 @@ export class BankAccountComponent
   withdrawMoney() {
     this.withdrawMoney$.next(this.withdrawControlValue);
     this.form.reset();
+    this.withdrawControl.addValidators(Validators.max(this.account.balance));
   }
 
   ngAfterContentInit() {
