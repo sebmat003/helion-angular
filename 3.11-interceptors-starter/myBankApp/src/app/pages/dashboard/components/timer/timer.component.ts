@@ -1,3 +1,4 @@
+import { AuthService } from './../../../../shared/services/auth.service';
 import { DatePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -9,7 +10,6 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { interval, Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -21,22 +21,25 @@ import { interval, Subject, takeUntil } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimerComponent implements OnDestroy {
-  @Input() startFrom = 30000;
+  @Input() startFrom = 300000;
   @Input() decrement = 1000;
 
   timer$: WritableSignal<number> = signal(this.startFrom);
   destroy$ = new Subject<void>();
-  router = inject(Router);
+  private readonly authService = inject(AuthService);
 
   constructor() {
     interval(1000)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => this.timer$.update((value) => value - this.decrement));
-    effect(() => {
-      if (this.timer$() <= 0) {
-        this.router.navigateByUrl('login');
-      }
-    });
+    effect(
+      () => {
+        if (this.timer$() <= 0) {
+          this.authService.logout();
+        }
+      },
+      { allowSignalWrites: true },
+    );
   }
 
   ngOnDestroy(): void {

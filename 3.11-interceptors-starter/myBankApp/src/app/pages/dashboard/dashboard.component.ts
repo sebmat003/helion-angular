@@ -3,19 +3,21 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { BankAccountComponent } from './components/bank-account/bank-account.component';
 import { BankAccountHttpService } from './services/bank-account-http.service';
 import { BehaviorSubject, combineLatest, map, switchMap } from 'rxjs';
-import { TimerComponent } from "./components/timer/timer.component";
+import { TimerComponent } from './components/timer/timer.component';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
-    selector: 'app-dashboard',
-    standalone: true,
-    providers: [BankAccountHttpService],
-    templateUrl: './dashboard.component.html',
-    styleUrl: './dashboard.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [CommonModule, BankAccountComponent, TimerComponent]
+  selector: 'app-dashboard',
+  standalone: true,
+  providers: [BankAccountHttpService],
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, BankAccountComponent, TimerComponent],
 })
 export class DashboardComponent {
   private readonly bankAccountHttpService = inject(BankAccountHttpService);
+  private readonly authService = inject(AuthService);
   accountsChange$ = new BehaviorSubject<void>(undefined);
   accounts$ = this.accountsChange$
     .pipe(
@@ -39,5 +41,9 @@ export class DashboardComponent {
   deleteAccount(accountId: number) {
     this.bankAccountHttpService.deleteAccount(accountId);
     this.accountsChange$.next();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

@@ -2,6 +2,7 @@
   <h2>Dashboard</h2>
   <app-timer></app-timer>
 </div>
+<button class="logout" (click)="logout()">Logout</button>
 
 @if (accounts$ | async; as accounts) {
   @for (account of accounts; track account.id; let i = $index) {
