@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
 import { BankAccount, Currency } from '../models/dashboard.models';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class BankAccountHttpService {
+  private readonly http = inject(HttpClient);
   //dummy data
   BANK_ACCOUNTS: BankAccount[] = [
     {
@@ -58,5 +60,9 @@ export class BankAccountHttpService {
         account.balance -= amount;
       }
     });
+  }
+
+  getResponseError(): Observable<unknown> {
+    return this.http.get<unknown>('dummy/api');
   }
 }
