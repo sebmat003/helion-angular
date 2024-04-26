@@ -46,4 +46,8 @@ export class DashboardComponent {
   logout() {
     this.authService.logout();
   }
+
+  sendDummyRequest() {
+    this.bankAccountHttpService.getResponseError().subscribe();
+  }
 }
