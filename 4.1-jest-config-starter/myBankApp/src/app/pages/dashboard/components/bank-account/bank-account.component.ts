@@ -22,6 +22,7 @@ import { BankAccount } from '../../models/dashboard.models';
 import { Subject, takeUntil } from 'rxjs';
 import { CardStatusDirective } from '../../../../shared/directives/card-status.directive';
 import { InputNumberComponent } from '../../../../shared/components/input-number/input-number.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-bank-account',
@@ -36,6 +37,25 @@ import { InputNumberComponent } from '../../../../shared/components/input-number
     AsyncPipe,
     CardStatusDirective,
     InputNumberComponent,
+  ],
+  animations: [
+    trigger('fade', [
+      transition('void => active', [
+        style({ opacity: 0 }),
+        animate(1000, style({ opacity: 1 })),
+      ]),
+      transition('void => inactive', [
+        style({
+          'background-color': 'rgba(200, 20, 20)',
+          transform: 'translateY(100%)',
+        }),
+        animate(
+          500,
+          style({ 'background-color': 'white', transform: 'translateY(0%)' }),
+        ),
+      ]),
+      transition('* => void', [animate(1000, style({ opacity: 0 }))]),
+    ]),
   ],
 })
 export class BankAccountComponent
