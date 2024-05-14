@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardComponent when bank accounts are loaded should match the snapshot 1`] = `
+<app-dashboard
+  accounts$={[Function AnonymousSubject]}
+  accountsChange$={[Function BehaviorSubject]}
+  authService={[Function AuthService]}
+  bankAccountHttpService={[Function BankAccountHttpService]}
+>
+  <div
+    class="centerize"
+  >
+    <h2>
+      Dashboard
+    </h2>
+    <app-timer>
+      <p
+        class="timer"
+      >
+         05:00
+      </p>
+    </app-timer>
+  </div><button
+    class="logout"
+  >
+    Logout
+  </button><app-bank-account
+    class="main-account"
+  >
+    <div
+      class="bank-account ng-trigger ng-trigger-fade card ng-untouched ng-pristine ng-invalid ng-animating"
+    >
+      <div
+        class="bank-account__status bank-account__status--active"
+      />
+      <p
+        class="bank-account__name"
+      >
+         Name: 
+        <span
+          class="font-weight-bold"
+        >
+          Main account
+        </span>
+      </p>
+      <p
+        class="bank-account__balance bank-account__balance--negative"
+      >
+         Balance: 
+        <span
+          class="font-weight-bold"
+        >
+          -15000 EURO
+        </span>
+      </p>
+      <p
+        class="bank-account__currency"
+      >
+         Currency: 
+        <img
+          alt="currency icon"
+          src="assets/icons/eur.svg"
+        />
+      </p>
+      <div
+        class="bank-account__withdraw withdraw"
+      >
+        <app-input-number
+          class="ng-untouched ng-pristine ng-invalid"
+          formcontrolname="withdraw"
+          placeholder="Withdraw"
+        >
+          <input
+            class="ng-untouched ng-pristine ng-invalid"
+            placeholder="Withdraw"
+          />
+        </app-input-number>
+        <button
+          disabled=""
+        >
+           Withdraw 
+        </button>
+      </div>
+      <button>
+         Delete account 
+      </button>
+    </div>
+  </app-bank-account><app-bank-account>
+    <div
+      class="bank-account ng-trigger ng-trigger-fade card ng-untouched ng-pristine ng-invalid ng-animating"
+    >
+      <div
+        class="bank-account__status bank-account__status--active"
+      />
+      <p
+        class="bank-account__name"
+      >
+         Name: 
+        <span
+          class="font-weight-bold"
+        >
+          Savings account
+        </span>
+      </p>
+      <p
+        class="bank-account__balance bank-account__balance--positive"
+      >
+         Balance: 
+        <span
+          class="font-weight-bold"
+        >
+          32000 ZŁOTYCH
+        </span>
+      </p>
+      <p
+        class="bank-account__currency"
+      >
+         Currency: 
+        <img
+          alt="currency icon"
+          src="assets/icons/pln.svg"
+        />
+      </p>
+      <div
+        class="bank-account__withdraw withdraw"
+      >
+        <app-input-number
+          class="ng-untouched ng-pristine ng-invalid"
+          formcontrolname="withdraw"
+          placeholder="Withdraw"
+        >
+          <input
+            class="ng-untouched ng-pristine ng-invalid"
+            placeholder="Withdraw"
+          />
+        </app-input-number>
+        <button
+          disabled=""
+        >
+           Withdraw 
+        </button>
+      </div>
+      <button>
+         Delete account 
+      </button>
+    </div>
+  </app-bank-account><app-bank-account>
+    <div
+      class="bank-account ng-trigger ng-trigger-fade card ng-untouched ng-pristine ng-invalid ng-animating"
+    >
+      <div
+        class="bank-account__status bank-account__status--inactive"
+      />
+      <p
+        class="bank-account__name"
+      >
+         Name: 
+        <span
+          class="font-weight-bold"
+        >
+          Other account
+        </span>
+      </p>
+      <p
+        class="bank-account__balance"
+      >
+         Balance: 
+        <span
+          class="font-weight-bold"
+        >
+          0 DOLARÓW
+        </span>
+      </p>
+      <p
+        class="bank-account__currency"
+      >
+         Currency: 
+        <img
+          alt="currency icon"
+          src="assets/icons/usd.svg"
+        />
+      </p>
+      <div
+        class="bank-account__withdraw withdraw"
+      >
+        <app-input-number
+          class="ng-untouched ng-pristine ng-invalid"
+          formcontrolname="withdraw"
+          placeholder="Withdraw"
+        >
+          <input
+            class="ng-untouched ng-pristine ng-invalid"
+            placeholder="Withdraw"
+          />
+        </app-input-number>
+        <button
+          disabled=""
+        >
+           Withdraw 
+        </button>
+      </div>
+      <button
+        disabled=""
+      >
+         Delete account 
+      </button>
+    </div>
+  </app-bank-account><button>
+    Send dummy request
+  </button>
+</app-dashboard>
+`;
+
+exports[`DashboardComponent when the accounts are loading should match the snapshot 1`] = `
+<app-dashboard
+  accounts$={[Function AnonymousSubject]}
+  accountsChange$={[Function BehaviorSubject]}
+  authService={[Function AuthService]}
+  bankAccountHttpService={[Function BankAccountHttpService]}
+>
+  <div
+    class="centerize"
+  >
+    <h2>
+      Dashboard
+    </h2>
+    <app-timer>
+      <p
+        class="timer"
+      >
+         05:00
+      </p>
+    </app-timer>
+  </div><button
+    class="logout"
+  >
+    Logout
+  </button> Loading...
+  <button>
+    Send dummy request
+  </button>
+</app-dashboard>
+`;
