@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BankAccountComponent should match the snapshot 1`] = `
+<app-bank-account
+  account={[Function Object]}
+  deleteButton="undefined"
+  destroy$={[Function Subject]}
+  form={[Function FormGroup]}
+  showWithdrawWarning="false"
+  withdrawMoney$={[Function EventEmitter_]}
+>
+  <div
+    class="bank-account ng-trigger ng-trigger-fade card ng-untouched ng-pristine ng-invalid ng-animating"
+  >
+    <div
+      class="bank-account__status bank-account__status--active"
+    />
+    <p
+      class="bank-account__name"
+    >
+       Name: 
+      <span
+        class="font-weight-bold"
+      >
+        My account
+      </span>
+    </p>
+    <p
+      class="bank-account__balance bank-account__balance--positive"
+    >
+       Balance: 
+      <span
+        class="font-weight-bold"
+      >
+        5000 ZŁOTYCH
+      </span>
+    </p>
+    <p
+      class="bank-account__currency"
+    >
+       Currency: 
+      <img
+        alt="currency icon"
+        src="assets/icons/pln.svg"
+      />
+    </p>
+    <div
+      class="bank-account__withdraw withdraw"
+    >
+      <app-input-number
+        class="ng-untouched ng-pristine ng-invalid"
+        formcontrolname="withdraw"
+        placeholder="Withdraw"
+      >
+        <input
+          class="ng-untouched ng-pristine ng-invalid"
+          placeholder="Withdraw"
+        />
+      </app-input-number>
+      <button
+        disabled=""
+      >
+         Withdraw 
+      </button>
+    </div>
+  </div>
+</app-bank-account>
+`;
