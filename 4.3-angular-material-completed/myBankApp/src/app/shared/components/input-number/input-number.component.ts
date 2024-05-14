@@ -11,11 +11,13 @@ import {
   NgControl,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-input-number',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './input-number.component.html',
   styleUrl: './input-number.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
