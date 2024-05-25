@@ -2,7 +2,7 @@ import {
   Directive,
   ElementRef,
   inject,
-  Input,
+  input,
   OnDestroy,
   OnInit,
   Renderer2,
@@ -17,7 +17,7 @@ const CARD_CLASSES = ['active-card', 'inactive-card'];
   standalone: true,
 })
 export class CardStatusDirective implements OnInit, OnDestroy {
-  @Input('appCardStatus') status!: Status;
+  status = input.required<Status>({ alias: 'appCardStatus' });
   destroy$ = new Subject<void>();
   element = inject(ElementRef).nativeElement;
   renderer = inject(Renderer2);
@@ -31,7 +31,7 @@ export class CardStatusDirective implements OnInit, OnDestroy {
     fromEvent(this.element, 'mouseover')
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        switch (this.status) {
+        switch (this.status()) {
           case 'active':
             this.renderer.addClass(this.element, CARD_CLASSES[0]);
             break;

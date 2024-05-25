@@ -3,7 +3,7 @@ import {
   ChangeDetectionStrategy,
   Optional,
   Self,
-  Input,
+  input,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -23,7 +23,7 @@ import { MatInputModule } from '@angular/material/input';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputNumberComponent implements ControlValueAccessor {
-  @Input() placeholder = 'Placeholder';
+  placeholder = input('Placeholder');
   value!: number;
 
   constructor(@Optional() @Self() public ngControl: NgControl) {

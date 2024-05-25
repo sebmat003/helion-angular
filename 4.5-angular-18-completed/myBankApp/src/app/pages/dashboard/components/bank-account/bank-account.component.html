@@ -1,15 +1,15 @@
 <div
-  [@fade]="account.status"
-  [appCardStatus]="account.status"
+  [@fade]="account().status"
+  [appCardStatus]="account().status"
   [formGroup]="form"
   class="bank-account"
 >
   <div
     class="bank-account__status"
-    [class]="'bank-account__status--' + account.status"
+    [class]="'bank-account__status--' + account().status"
   ></div>
   <p class="bank-account__name">
-    Name: <span class="font-weight-bold">{{ account.name }}</span>
+    Name: <span class="font-weight-bold">{{ account().name }}</span>
   </p>
   <p
     class="bank-account__balance"
@@ -20,13 +20,13 @@
   >
     Balance:
     <span class="font-weight-bold">{{
-      balance | balance: account.currency : true
+      balance | balance: account().currency : true
     }}</span>
   </p>
   <p class="bank-account__currency">
     Currency:
     <img
-      [src]="'assets/icons/' + account.currency.toLowerCase() + '.svg'"
+      [src]="'assets/icons/' + account().currency.toLowerCase() + '.svg'"
       alt="currency icon"
     />
   </p>

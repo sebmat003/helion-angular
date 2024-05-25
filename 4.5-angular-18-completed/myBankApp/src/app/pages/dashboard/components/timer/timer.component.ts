@@ -5,7 +5,7 @@ import {
   Component,
   effect,
   inject,
-  Input,
+  input,
   OnDestroy,
   signal,
   WritableSignal,
@@ -21,17 +21,16 @@ import { interval, Subject, takeUntil } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimerComponent implements OnDestroy {
-  @Input() startFrom = 300000;
-  @Input() decrement = 1000;
-
-  timer$: WritableSignal<number> = signal(this.startFrom);
+  decrement = input(1000);
+  startFrom = input(300000);
+  timer$: WritableSignal<number> = signal(this.startFrom());
   destroy$ = new Subject<void>();
   private readonly authService = inject(AuthService);
 
   constructor() {
     interval(1000)
       .pipe(takeUntil(this.destroy$))
-      .subscribe(() => this.timer$.update((value) => value - this.decrement));
+      .subscribe(() => this.timer$.update((value) => value - this.decrement()));
     effect(
       () => {
         if (this.timer$() <= 0) {

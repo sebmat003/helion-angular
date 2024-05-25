@@ -3,13 +3,12 @@ import {
   AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  ContentChild,
+  contentChild,
   ElementRef,
-  EventEmitter,
-  Input,
+  input,
   OnDestroy,
   OnInit,
-  Output,
+  output,
 } from '@angular/core';
 import {
   FormControl,
@@ -61,16 +60,15 @@ import { animate, style, transition, trigger } from '@angular/animations';
 export class BankAccountComponent
   implements OnInit, AfterContentInit, OnDestroy
 {
-  @ContentChild('deleteButton') deleteButton!: ElementRef;
-  @Input() account!: BankAccount;
-  @Output() withdrawMoney$ = new EventEmitter<number>();
-
+  deleteButton = contentChild<ElementRef>('deleteButton');
+  account = input.required<BankAccount>();
+  withdrawMoney$ = output<number>();
   destroy$ = new Subject<void>();
   form!: FormGroup;
   showWithdrawWarning = false;
 
   get balance(): number {
-    return this.account.balance;
+    return this.account().balance;
   }
 
   get withdrawControl(): FormControl {
@@ -87,7 +85,7 @@ export class BankAccountComponent
         validators: [
           Validators.required,
           Validators.min(1),
-          Validators.max(this.account.balance),
+          Validators.max(this.account().balance),
         ],
       }),
     });
@@ -99,14 +97,14 @@ export class BankAccountComponent
   }
 
   withdrawMoney() {
-    this.withdrawMoney$.next(this.withdrawControlValue);
+    this.withdrawMoney$.emit(this.withdrawControlValue);
     this.form.reset();
-    this.withdrawControl.addValidators(Validators.max(this.account.balance));
+    this.withdrawControl.addValidators(Validators.max(this.account().balance));
   }
 
   ngAfterContentInit() {
-    if (this.account.status === 'inactive') {
-      this.deleteButton.nativeElement.disabled = true;
+    if (this.account().status === 'inactive') {
+      (this.deleteButton() as ElementRef).nativeElement.disabled = true;
     }
   }
 
