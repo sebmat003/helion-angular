@@ -28,18 +28,16 @@ describe('BankAccountComponent', () => {
   beforeEach(() => {
     spectator = createComponent();
     component = spectator.component;
+    spectator.fixture.componentRef.setInput('account', bankAccountMock);
   });
 
   it('should match the snapshot', () => {
-    component.account = bankAccountMock;
-
     spectator.detectChanges();
 
     expect(spectator.fixture).toMatchSnapshot();
   });
 
   it('should show withdraw warning', () => {
-    component.account = bankAccountMock;
     spectator.detectChanges();
 
     const inputNumber = spectator.query('.withdraw input') as HTMLInputElement;
@@ -50,7 +48,6 @@ describe('BankAccountComponent', () => {
   });
 
   it('should correctly withdraw money from the account', () => {
-    component.account = bankAccountMock;
     spectator.detectChanges();
     jest.spyOn(component.form, 'reset');
     jest.spyOn(component.withdrawControl, 'addValidators');
@@ -70,7 +67,6 @@ describe('BankAccountComponent', () => {
     ['Minimum value is 1', -1],
     ['Insufficient money in the account', 5001],
   ])('should show an error: %s, when the input value is %s', (error, value) => {
-    component.account = bankAccountMock;
     spectator.detectChanges();
 
     component.withdrawControl.setValue(value);

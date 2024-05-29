@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
+    "test:u": "jest -u",
     "lint": "ng lint",
     "prettier:check": "prettier --check src/**/*.{ts,scss,html}",
     "prettier:write": "prettier --write src/**/*.{ts,scss,html}",

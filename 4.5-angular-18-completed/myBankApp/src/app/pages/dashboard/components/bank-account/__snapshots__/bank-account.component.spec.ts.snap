@@ -2,12 +2,12 @@
 
 exports[`BankAccountComponent should match the snapshot 1`] = `
 <app-bank-account
-  account={[Function Object]}
-  deleteButton="undefined"
+  account={[Function Function]}
+  deleteButton={[Function Function]}
   destroy$={[Function Subject]}
   form={[Function FormGroup]}
   showWithdrawWarning="false"
-  withdrawMoney$={[Function EventEmitter_]}
+  withdrawMoney$={[Function OutputEmitterRef]}
 >
   <div
     class="bank-account ng-trigger ng-trigger-fade card ng-untouched ng-pristine ng-invalid ng-animating"
@@ -52,10 +52,52 @@ exports[`BankAccountComponent should match the snapshot 1`] = `
         formcontrolname="withdraw"
         placeholder="Withdraw"
       >
-        <input
-          class="ng-untouched ng-pristine ng-invalid"
-          placeholder="Withdraw"
-        />
+        <mat-form-field
+          class="mat-mdc-form-field mat-mdc-form-field-type-mat-input mat-form-field-no-animations mat-form-field-appearance-fill mat-primary ng-untouched ng-pristine ng-invalid"
+        >
+          <div
+            class="mat-mdc-text-field-wrapper mdc-text-field mdc-text-field--filled mdc-text-field--no-label"
+          >
+            <div
+              class="mat-mdc-form-field-focus-overlay"
+              style=""
+            />
+            <div
+              class="mat-mdc-form-field-flex"
+            >
+              <div
+                class="mat-mdc-form-field-infix"
+              >
+                <input
+                  aria-invalid="false"
+                  aria-required="true"
+                  class="mat-mdc-input-element ng-untouched ng-pristine ng-invalid mat-mdc-form-field-input-control mdc-text-field__input cdk-text-field-autofill-monitored"
+                  matinput=""
+                  placeholder="Withdraw"
+                  required=""
+                  type="number"
+                />
+              </div>
+            </div>
+            <div
+              class="mdc-line-ripple mdc-line-ripple--deactivating"
+              matformfieldlineripple=""
+              style=""
+            />
+          </div>
+          <div
+            class="mat-mdc-form-field-subscript-wrapper mat-mdc-form-field-bottom-align"
+          >
+            <div
+              class="mat-mdc-form-field-hint-wrapper ng-trigger ng-trigger-transitionMessages"
+              style="opacity: 1; transform: translateY(0%);"
+            >
+              <div
+                class="mat-mdc-form-field-hint-spacer"
+              />
+            </div>
+          </div>
+        </mat-form-field>
       </app-input-number>
       <button
         disabled=""
